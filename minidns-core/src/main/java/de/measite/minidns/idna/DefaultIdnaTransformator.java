@@ -16,7 +16,13 @@ public class DefaultIdnaTransformator implements IdnaTransformator {
 
     @Override
     public String toASCII(String input) {
-        return IDN.toASCII(input);
+        String ascii = "";
+        try {
+            ascii = IDN.toASCII(input);
+            return ascii;
+        } catch (IllegalArgumentException e) {
+            return input;
+        }
     }
 
     @Override
